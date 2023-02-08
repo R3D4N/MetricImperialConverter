@@ -32,7 +32,7 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result
-    let unitRegex = /^(\d+\/\d+|\d+|\d+\.\d+|\d+\.\d+\/\d+|)(gal|L|lbs|kg|km|mi)$/ig
+    let unitRegex = /(gal|L|lbs|kg|km|mi)$/ig
     let unit = input.match(unitRegex)
     if (unit == null) {
       throw new Error('invalid unit')
@@ -101,7 +101,7 @@ function ConvertHandler() {
       default:
         result = 'error unit';
     }
-    return result;
+    return Math.round(result * Math.pow(10, 5)) / Math.pow(10, 5);
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
