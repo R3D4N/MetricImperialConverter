@@ -32,7 +32,7 @@ function ConvertHandler() {
 
   this.getUnit = function (input) {
     let result
-    let unitRegex = /^(\d+\/\d+|\d+|\d+\.\d+|\d+\.\d+\/\d+|)(gal|L|lbs|Kg|Km|mi)$/ig
+    let unitRegex = /^(\d+\/\d+|\d+|\d+\.\d+|\d+\.\d+\/\d+|)(gal|L|lbs|kg|km|mi)$/ig
     let unit = input.match(unitRegex)
     if (unit == null) {
       throw new Error('invalid unit')
@@ -44,10 +44,10 @@ function ConvertHandler() {
           result = 'L'; break;
         case /lbs$/i.test(input):
           result = 'lbs'; break;
-        case /Kg$/i.test(input):
-          result = 'Kg'; break;
-        case /Km$/i.test(input):
-          result = 'Km'; break;
+        case /kg$/i.test(input):
+          result = 'kg'; break;
+        case /km$/i.test(input):
+          result = 'km'; break;
         case /mi$/i.test(input):
           result = 'mi'; break;
       }
@@ -59,10 +59,10 @@ function ConvertHandler() {
     let result = {
       'gal': 'L',
       'L': 'gal',
-      'lbs': 'Kg',
-      'Kg': 'lbs',
-      'mi': 'Km',
-      'Km': 'mi'
+      'lbs': 'kg',
+      'kg': 'lbs',
+      'mi': 'km',
+      'km': 'mi'
     }
     return result[initUnit];
   };
@@ -72,9 +72,9 @@ function ConvertHandler() {
       'gal': 'gallons',
       'L': 'liters',
       'lbs': 'pounds',
-      'Kg': 'kilograms',
+      'kg': 'kilograms',
       'mi': 'miles',
-      'Km': 'kilometers'
+      'km': 'kilometers'
     }
     return result[unit];
   };
@@ -92,11 +92,11 @@ function ConvertHandler() {
         result = initNum / galToL; break;
       case 'lbs':
         result = lbsToKg * initNum; break;
-      case 'Kg':
+      case 'kg':
         result = initNum / lbsToKg; break;
       case 'mi':
         result = miToKm * initNum; break;
-      case 'Km':
+      case 'km':
         result = initNum / miToKm; break;
       default:
         result = 'error unit';

@@ -23,15 +23,15 @@ suite('Unit Tests', function () {
     })
     // #5
     test('not double fraction', function () {
-        assert.throw(() => { convertHandler.getUnit('4/5/5gal') })
+        assert.throw(() => { convertHandler.getNum('4/5/5gal') })
     })
     // #6
     test('default numerical 1', function () {
-        assert.strictEqual(convertHandler.getNum('Kg'), 1, 'default number 1')
+        assert.strictEqual(convertHandler.getNum('kg'), 1, 'default number 1')
     })
     // #7
     test('valid input unit', function () {
-        assert.include(['gal', 'L', 'lbs', 'Kg', 'Km', 'mi'], convertHandler.getUnit('4Kg'), 'correct unit')
+        assert.include(['gal', 'L', 'lbs', 'kg', 'km', 'mi'], convertHandler.getUnit('4kg'), 'correct unit')
     })
     // #8
     test('valid input unit', function () {
@@ -39,11 +39,11 @@ suite('Unit Tests', function () {
     })
     // #9
     test('return valid input', function () {
-        assert.include(['gal', 'L', 'lbs', 'Kg', 'Km', 'mi'], convertHandler.getUnit('4kG'), 'correct unit')
+        assert.include(['gal', 'L', 'lbs', 'kg', 'km', 'mi'], convertHandler.getUnit('4kG'), 'correct unit')
     })
     // #10
     test('return valid spelled-out', function () {
-        assert.include(['gallons', 'liters', 'pounds', 'kilograms', 'kilometers', 'miles'], convertHandler.spellOutUnit('Kg'), 'correct spelled-out string')
+        assert.include(['gallons', 'liters', 'pounds', 'kilograms', 'kilometers', 'miles'], convertHandler.spellOutUnit('kg'), 'correct spelled-out string')
     })
     // #11
     test('convert gal to L', function(){
@@ -55,18 +55,18 @@ suite('Unit Tests', function () {
     })
     // #13
     test('convert mi to Km', function(){
-        assert.strictEqual(convertHandler.getReturnUnit('mi'),'Km', 'convert mi to Km')
+        assert.strictEqual(convertHandler.getReturnUnit('mi'),'km', 'convert mi to Km')
     })
     // #14
     test('convert Km to mi', function(){
-        assert.strictEqual(convertHandler.getReturnUnit('Km'),'mi', 'convert Km to mi')
+        assert.strictEqual(convertHandler.getReturnUnit('km'),'mi', 'convert Km to mi')
     })
     // #15
     test('convert lbs to Kg', function(){
-        assert.strictEqual(convertHandler.getReturnUnit('lbs'),'Kg', 'convert lbs to Kg')
+        assert.strictEqual(convertHandler.getReturnUnit('lbs'),'kg', 'convert lbs to Kg')
     })
     // #16
     test('convert Kg to lbs', function(){
-        assert.strictEqual(convertHandler.getReturnUnit('Kg'),'lbs', 'convert Kg to lbs')
+        assert.strictEqual(convertHandler.getReturnUnit('kg'),'lbs', 'convert Kg to lbs')
     })
 });
